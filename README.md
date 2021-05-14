@@ -7,3 +7,5 @@ Node.js Template App For Local Grocery Stores
 - /orders [GET, POST]
 - /orders{id} [GET, DELETE]
 
+## Server Logging 
+- morgan (https://www.npmjs.com/package/morgan)
