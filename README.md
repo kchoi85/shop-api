@@ -9,3 +9,7 @@ Node.js Template App For Local Grocery Stores
 
 ## Server Logging 
 - morgan (https://www.npmjs.com/package/morgan)
+
+## Handling CORS
+```javascript
+```
