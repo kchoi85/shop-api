@@ -1,5 +1,5 @@
 # shop-api :shopping:
-NodeJS app: RESTful API for Products and Orders
+The REST API is implemented as JSON over HTTP using all four verbs (GET/POST/PUT/DELETE). Each resource, like Order, Product, or Collection, has a distinct URL and is manipulated in isolation. In other words, we’ve tried to make the API follow the REST principles as much as possible.
 
 ## API Routes
 - dev-s01edge.kihoon.lab.com/products [GET, POST]
