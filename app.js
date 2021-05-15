@@ -3,6 +3,17 @@ const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
+// #6 
+require('dotenv').config();
+const mongoose = require('mongoose');
+
+mongoose.connect(
+    'mongodb+srv://mongo:' + 
+        process.env.MONGO_ATLAS_PW + 
+        '@cluster0.kxpu2.mongodb.net/shop-api?retryWrites=true&w=majority', 
+);
+//mongoose.connect('mongodb+srv://mongo:Zjsxyks9!@cluster0.kxpu2.mongodb.net/shop-api?retryWrites=true&w=majority')
+
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
