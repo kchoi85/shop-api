@@ -1,14 +1,15 @@
 # shop-api :shopping:
-Node.js Template App For Local Grocery Stores
+NodeJS app: RESTful API for Products and Orders
 
 ## API Routes
-- /products [GET, POST]
-- /products/{id} [GET, PATCH, DELETE]
-- /orders [GET, POST]
-- /orders{id} [GET, DELETE]
+- dev-s01edge.kihoon.lab.com/products [GET, POST]
+- dev-s01edge.kihoon.lab.com/products/{:id} [GET, PATCH, DELETE]
+- dev-s01edge.kihoon.lab.com/orders [GET, POST]
+- dev-s01edge.kihoon.lab.com/orders{:id} [GET, DELETE]
 
 ## Server Logging 
-- morgan (https://www.npmjs.com/package/morgan)
+- **morgan** (https://www.npmjs.com/package/morgan)
+- **dotenv** (https://www.npmjs.com/package/dotenv)
 
 ## Handling CORS
 ```javascript
