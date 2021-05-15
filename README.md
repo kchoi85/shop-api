@@ -12,7 +12,7 @@ Node.js Template App For Local Grocery Stores
 
 ## Handling CORS
 ```javascript
-/*  Cors - Cross-Origin Resource Sharing
+/*  CORS - Cross-Origin Resource Sharing
     Client = localhost:4000
     Server = localhost:3000
     -sending *headers* from the server to the client (to give access)
