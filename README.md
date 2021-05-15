@@ -29,3 +29,12 @@ app.use((req, res, next) => {
     next();
 });
 ```
+
+## Product Schema
+```javascript
+const productSchema = mongoose.Schema({
+    _id: mongoose.Schema.Types.ObjectId,
+    name: String,
+    price: Number
+});
+```
