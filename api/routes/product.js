@@ -86,9 +86,11 @@ router.get('/:productId', (req, res, next) => {
 });
 
 router.patch('/:productId', (req, res, next) => {
-    res.status(200).json({
-        message: 'Updated product!'
-    });
+    const id = req.params.productId;
+    Product.update({_id: id}, { $set})
+    // res.status(200).json({
+    //     message: 'Updated product!'
+    // });
 });
 
 router.delete('/:productId', (req, res, next) => {
