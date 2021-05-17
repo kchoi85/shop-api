@@ -33,9 +33,26 @@ app.use((req, res, next) => {
 
 ## Product Schema
 ```javascript
+const mongoose = require('mongoose');
+
 const productSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
-    name: String,
-    price: Number
+    name: {type: String, required: true},
+    price: {type: Number, required: true}
 });
+
+module.exports = mongoose.model('Product', productSchema);
+```
+
+## Order Schema
+```javascript
+const mongoose = require('mongoose');
+
+const orderSchema = mongoose.Schema({
+    _id: mongoose.Schema.Types.ObjectId,
+    product: {type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true},
+    quantity: {type: Number, default: 1}
+});
+
+module.exports = mongoose.model('Order', orderSchema);
 ```
