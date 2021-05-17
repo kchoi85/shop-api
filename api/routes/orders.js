@@ -32,7 +32,6 @@ router.get('/', (req, res, next) => {
                         }
                     }
                 }),
-
             });
         })
         .catch(err => {
@@ -122,7 +121,7 @@ router.delete('/:orderId', (req, res, next) => {
                 request: {
                     type: "POST",
                     url: 'http://localhost:3000/orders/',
-                    body: { productId: "ID", quantity: "Number"}
+                    body: { productId: "Id", quantity: "Number"}
                 }
             });
         })

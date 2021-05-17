@@ -8,11 +8,14 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 
 mongoose.connect(
-    'mongodb+srv://mongo:' + 
-        process.env.MONGO_ATLAS_PW + 
-        '@cluster0.kxpu2.mongodb.net/shop-api?retryWrites=true&w=majority', 
+    'mongodb+srv://mongo:' + process.env.MONGO_ATLAS_PW + '@cluster0.kxpu2.mongodb.net/shop-api?retryWrites=true&w=majority',
+    { 
+        useNewUrlParser: true, 
+        useUnifiedTopology: true 
+    }
 );
 //mongoose.connect('mongodb+srv://mongo:Zjsxyks9!@cluster0.kxpu2.mongodb.net/shop-api?retryWrites=true&w=majority')
+mongoose.Promise = global.Promise; // use default Nodejs promise implementation
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
