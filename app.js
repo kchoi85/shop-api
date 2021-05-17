@@ -18,7 +18,7 @@ app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-const productRoutes = require('./api/routes/product');
+const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/orders');
 
 /*  Cors - Cross-Origin Resource Sharing
