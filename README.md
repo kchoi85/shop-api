@@ -56,3 +56,36 @@ const orderSchema = mongoose.Schema({
 
 module.exports = mongoose.model('Order', orderSchema);
 ```
+
+## Uploading & Storing Image Files
+```javascript
+// app.js
+app.use('/uploads', express.static('uploads'))
+
+// products.js
+const multer = require('multer') // body parser for parsing form data
+// multer
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, './uploads/');
+    },
+    filename: function(req, file, cb) {
+        cb(null, Date.now() + file.originalname);
+    }
+});
+// fileFilter param for multer
+const fileFilter = (req, file, cb) => {
+    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+        cb(null, true); //accept file
+    } else {
+        cb(null, false); //reject file
+    }
+}
+const upload = multer({
+    storage: storage, 
+    limits: {
+        fileSize: 1024 * 1024 * 5 //5mb
+    },
+    fileFilter: fileFilter
+});
+```

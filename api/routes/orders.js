@@ -16,12 +16,13 @@ const Product = require('../models/product');
 router.get('/', (req, res, next) => {
     Order.find()
         .select('product quantity _id')
+        .populate('product', 'name') //populates query: product, if ',' is passed as 2nd param, we select for those
         .exec()
         .then(docs => {
             console.log(docs);
             res.status(200).json({
                 count: docs.length,
-                order: docs.map(doc => {
+                orders: docs.map(doc => {
                     return {
                         _id: doc._id,
                         product: doc.product,
@@ -89,6 +90,7 @@ router.get('/:orderId', (req, res, next) => {
     const id = req.params.orderId;
     Order.findById(id)
     .select('product quantity _id')
+    .populate('product')
     .exec()
     .then(doc => {
         if (!doc) {

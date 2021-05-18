@@ -18,6 +18,7 @@ mongoose.connect(
 mongoose.Promise = global.Promise; // use default Nodejs promise implementation
 
 app.use(morgan('dev'));
+app.use('/uploads', express.static('uploads')) //get the image file from uploads dir
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
