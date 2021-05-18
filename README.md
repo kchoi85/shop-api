@@ -159,6 +159,9 @@ router.delete('/:orderId', checkAuth, (req, res, next) => { ... }
 ## MongoDB Atlas
 https://cloud.mongodb.com/
 
+## TODOs
+- Create Users Model with restricted privilege (Admin vs Customer)
+
 
 
 
