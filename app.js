@@ -24,6 +24,7 @@ app.use(bodyParser.json());
 
 const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/orders');
+const userRoutes = require('./api/routes/users');
 
 /*  Cors - Cross-Origin Resource Sharing
     Client = localhost:4000
@@ -46,6 +47,7 @@ app.use((req, res, next) => {
 // middleware, incoming request must go through app.use()
 app.use('/products', productRoutes); // if we pass /products, we go to product.js, which we did router.get('/');
 app.use('/orders', orderRoutes);
+app.use('/user', userRoutes);
 
 // if we reach here (after above 2 routes, means no routes were able to handle the request)
 app.use((req, res, next) => {

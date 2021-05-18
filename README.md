@@ -33,8 +33,6 @@ app.use((req, res, next) => {
 
 ## Product Schema
 ```javascript
-const mongoose = require('mongoose');
-
 const productSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     name: {type: String, required: true},
@@ -47,8 +45,6 @@ module.exports = mongoose.model('Product', productSchema);
 
 ## Order Schema
 ```javascript
-const mongoose = require('mongoose');
-
 const orderSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     product: {type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true},
@@ -56,6 +52,22 @@ const orderSchema = mongoose.Schema({
 });
 
 module.exports = mongoose.model('Order', orderSchema);
+```
+
+## User Schema
+```javascript
+const userSchema = mongoose.Schema({
+    _id: mongoose.Schema.Types.ObjectId,
+    email: {
+        type: String, 
+        required: true, 
+        unique: true, 
+        match: /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/
+    },
+    password: {type: String, required: true}
+});
+
+module.exports = mongoose.model('User', userSchema);
 ```
 
 ## Uploading & Storing Image Files
@@ -95,4 +107,17 @@ const upload = multer({
 router.post('/', upload.single('productImage'), (req, res, next) => {...
     productImage:  req.file.path
 }
+```
+
+## User Signup and Login with Token
+- **bcrypt** (https://www.npmjs.com/package/bcrypt & https://github.com/kelektiv/node.bcrypt.js) 
+- **jsonwebtoken** (https://www.npmjs.com/package/jsonwebtoken & https://github.com/auth0/node-jsonwebtoken)
+- JSON data + Signature = JSON Web Token (JWT)
+- Signature can be verified as Server has Private Key
+
+```javascript
+// app.js
+// Hash Password vs. Compare Password
+bcrypt.hash(req.body.password, 10, (err, hash) => { ... } // --> 10 rounds of adding salt to hashed password
+bcrypt.compare(req.body.password, user[0].password, (err, result) => { ... }
 ```
