@@ -122,6 +122,7 @@ bcrypt.hash(req.body.password, 10, (err, hash) => { ... } // --> 10 rounds of ad
 bcrypt.compare(req.body.password, user[0].password, (err, result) => { ... }
 
 // jwt token sign
+// router.post('/login', (req, res, next) => { ...
 if (result) {
     const token = jwt.sign({
         email: user[0].email,
@@ -152,6 +153,9 @@ module.exports = (req, res, next) => {
 const checkAuth = require('../middleware/check-auth');
 router.delete('/:orderId', checkAuth, (req, res, next) => { ... }
 ```
+
+![image](https://user-images.githubusercontent.com/52897657/118692215-ce2f7380-b7d7-11eb-8867-d59873d8b2c9.png)
+
 
 
 
