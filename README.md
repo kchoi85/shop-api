@@ -89,4 +89,10 @@ const upload = multer({
     },
     fileFilter: fileFilter
 });
+
+...
+
+router.post('/', upload.single('productImage'), (req, res, next) => {...
+    productImage:  req.file.path
+}
 ```
