@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const Product = require('../models/product');
 
 const multer = require('multer') // body parser for parsing form data
-// multer
+// multer config (storage[destination, filename], limits, fileFilter)
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
         cb(null, './uploads/');

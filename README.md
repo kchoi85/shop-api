@@ -65,7 +65,7 @@ app.use('/uploads', express.static('uploads'))
 
 // products.js
 const multer = require('multer') // body parser for parsing form data
-// multer
+// multer config (storage[destination, filename], limits, fileFilter)
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
         cb(null, './uploads/');
