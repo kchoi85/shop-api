@@ -111,13 +111,28 @@ router.post('/', upload.single('productImage'), (req, res, next) => {...
 
 ## User Signup and Login with Token
 - **bcrypt** (https://www.npmjs.com/package/bcrypt & https://github.com/kelektiv/node.bcrypt.js) 
-- **jsonwebtoken** (https://www.npmjs.com/package/jsonwebtoken & https://github.com/auth0/node-jsonwebtoken)
-- JSON data + Signature = JSON Web Token (JWT)
-- Signature can be verified as Server has Private Key
+- **jsonwebtoken** (https://www.npmjs.com/package/jsonwebtoken & https://github.com/auth0/node-jsonwebtoken) + https://jwt.io/
+    - JSON data + Signature = JSON Web Token (JWT)
+    - Signature can be verified as Server has Private Key
 
 ```javascript
-// app.js
+// users.js
 // Hash Password vs. Compare Password
 bcrypt.hash(req.body.password, 10, (err, hash) => { ... } // --> 10 rounds of adding salt to hashed password
 bcrypt.compare(req.body.password, user[0].password, (err, result) => { ... }
+
+// jwt token sign
+if (result) {
+    const token = jwt.sign({
+        email: user[0].email,
+        userId: user[0]._id
+    }, 
+    process.env.JWT_KEY,
+    {
+        expiresIn: "1h"
+    });
+    return res.status(200).json({ 
+        message: 'Auth successful',
+        token: token 
+    });
 ```
