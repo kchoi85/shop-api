@@ -86,7 +86,7 @@ router.delete('/:orderId', checkAuth, (req, res, next) => { ... }
 ```
 
 ![image](https://user-images.githubusercontent.com/52897657/118692215-ce2f7380-b7d7-11eb-8867-d59873d8b2c9.png)
-## Schmea
+## Schema
 ### Product Schema
 ```javascript
 const productSchema = mongoose.Schema({
